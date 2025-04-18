@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid, Cell, ProgressBar } from 'react-mdl';
 
-class Skills extends Component{
-    render(){
-        return(
-            <Grid>
-                <Cell col={4}>
-                <p>{this.props.skill}</p>
-                </Cell>
-                <Cell col={8}>
-                <ProgressBar 
-                            progress={this.props.progress}
-                        />
-                </Cell>
-            </Grid>
-        );
-    }
-}
+const Skills = ({ skill, progress }) => (
+  <Grid>
+    <Cell col={4}>
+      <p>{skill}</p>
+    </Cell>
+    <Cell col={8}>
+      <ProgressBar progress={progress} />
+    </Cell>
+  </Grid>
+);
 
 export default Skills;
