@@ -27,7 +27,7 @@ class Resume extends Component {
               Being worked for different projects helped me to adapt to the changes quickly and made me a mature team worker.
             </p>
             <hr style={{ borderTop: "2px solid #833fb2", width: "50%" }} />
-            <h5>Address</h5>
+            <h5>Address </h5>
             <p>Raipura-1630, Narsingdi, Dhaka</p>
             <h5>Phone</h5>
             <p>(+880) 1642259188</p>
