@@ -18,7 +18,7 @@ const Homepage = () => {
             <h1>Asp .Net Full Stack Developer</h1>
             <hr />
             <p>
-              HTML | CSS | BOOTSTRAP | PHP | MYSQL | C# | ASP .NET CORE | SQL SERVER
+              HTML | CSS | BOOTSTRAP | PHP | MYSQL | C# | ASP .NET CORE | SQL SERVER |Javascript
             </p>
 
             <div className="social-links">
