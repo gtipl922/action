@@ -16,6 +16,10 @@
   height: 100%;
 }
 
+.test1 {
+  background: red;
+}
+
 .header-color {
   background: #de6161; /* fallback for old browsers */
   background: -webkit-linear-gradient(
