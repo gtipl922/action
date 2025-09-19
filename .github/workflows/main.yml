@@ -1,40 +1,40 @@
 name: Generate README
 
 on:
-push:
-branches:
-- master
+  push:
+    branches:
+      - master
 
 jobs:
-generate:
-runs-on: ubuntu-latest
+  generate:
+    runs-on: ubuntu-latest
 
-steps:
-  # Step 1: Check out the repository code
-  - name: Checkout repository
-    uses: actions/checkout@v4
-  
-  # Step 2: Set up Python
-  - name: Set up Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: '3.x'
-      
-  # Step 3: Install dependencies (if your script needs them)
-  - name: Install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      pip install requests # For making API calls
-      
-  # Step 4: Run the Python script to generate the README
-  - name: Generate and update README
-    env:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-    run: |
-      # The Python script 'generate_readme.py' would contain the logic to:
-      # 1. Analyze the repo's contents (e.g., list files, read code summaries).
-      # 2. Construct a prompt for the AI model.
-      # 3. Call the Gemini API using the GEMINI_API_KEY secret.
-      # 4. Write the generated content to 'README.md'.
-      # 5. Commit the new README.md file back to the repository.
-      python generate_readme.py
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install dependencies (if your script needs them)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests # For making API calls
+
+      # Step 4: Run the Python script to generate the README
+      - name: Generate and update README
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          # The Python script 'generate_readme.py' would contain the logic to:
+          # 1. Analyze the repo's contents (e.g., list files, read code summaries).
+          # 2. Construct a prompt for the AI model.
+          # 3. Call the Gemini API using the GEMINI_API_KEY secret.
+          # 4. Write the generated content to 'README.md'.
+          # 5. Commit the new README.md file back to the repository.
+          python generate_readme.py
