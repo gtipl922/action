@@ -12,14 +12,54 @@ README_FILE = "README.md"
 
 def get_project_description():
     """
-    In a real-world scenario, this function would analyze the repository
-    to gather information for the AI prompt. This is a simplified version.
-    You could read file names, a manifest file (like package.json), or
-    look for specific code comments to build a detailed description.
+    Analyzes the repository to gather information for the AI prompt.
+    This version reads file names and simulates reading a package.json for dependencies.
     """
-    # Placeholder: In a real script, you'd analyze the repo contents here.
-    # For this example, we'll use a hardcoded description.
-    return "A Python-based utility that automates the generation of professional README.md files for a GitHub repository using the Gemini API. It is designed to run as a GitHub Action."
+    # Get a list of all files in the repository
+    file_list = []
+    for root, dirs, files in os.walk("."):
+        # Exclude common directories like .git, node_modules, etc.
+        dirs[:] = [d for d in dirs if d not in ['.git', 'node_modules', '__pycache__', '.github']]
+        for file in files:
+            file_list.append(os.path.join(root, file))
+
+    # Simulate reading a package.json or requirements.txt
+    project_metadata = {
+        "files": file_list,
+        "dependencies": {},
+        "scripts": {}
+    }
+
+    try:
+        with open("package.json", "r") as f:
+            package_json = json.load(f)
+            if "dependencies" in package_json:
+                project_metadata["dependencies"] = package_json["dependencies"]
+            if "scripts" in package_json:
+                project_metadata["scripts"] = package_json["scripts"]
+    except FileNotFoundError:
+        # Fallback if no package.json is found
+        pass
+    except json.JSONDecodeError:
+        print("Warning: Could not parse package.json. Skipping.")
+        pass
+
+    # Build a concise text description from the gathered data
+    description = "The project has the following file structure:\n"
+    for file in project_metadata["files"]:
+        description += f"- {file}\n"
+    
+    if project_metadata["dependencies"]:
+        description += "\nIt has the following dependencies:\n"
+        for dep, version in project_metadata["dependencies"].items():
+            description += f"- {dep}: {version}\n"
+    
+    if project_metadata["scripts"]:
+        description += "\nIt has the following scripts:\n"
+        for script, command in project_metadata["scripts"].items():
+            description += f"- {script}: {command}\n"
+
+    return description
 
 def generate_readme_content(project_description):
     """
