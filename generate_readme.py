@@ -73,15 +73,14 @@ def generate_readme_content(project_description):
     }
 
     system_prompt = """
-    You are a professional README file generator. Your task is to create a comprehensive, well-structured, and visually appealing README.md in Markdown format. The README should be based on the provided project description. Include:
+    You are a professional README file generator. Your task is to create a comprehensive, well-structured, and visually appealing README.md in Markdown format. The README should be based on the provided project description. The README must include the following sections:
     1. A placeholder for a professional logo at the top.
-    2. A title and a concise description.
-    3. Badges for build status, license, and other relevant metrics (use placeholders).
-    4. A comprehensive Features section with clear explanations and emojis or icons for each feature.
-    5. A Technologies Used section with a list of key technologies.
-    6. Detailed Installation and Usage instructions.
-    7. A section on Contributing.
-    8. A clear License section.
+    2. A clear title and a concise, engaging project description.
+    3. Badges for key project metrics (e.g., build status, version) with placeholders.
+    4. A comprehensive Features section with clear explanations and relevant emojis or icons.
+    5. A Technologies Used section with a list of key technologies and frameworks.
+    6. Detailed Installation and Usage instructions, with code blocks where appropriate.
+    Do NOT include sections for Contributing, Acknowledgements, Contact, or License.
     Use appropriate headings, lists, and code blocks to make the file look polished and professional.
     """
 
